@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-blue': '#133A5E',
+                        'main-orange': '#FF9934',
+                        'light-gray-bg': '#F4F4F4',
+                        'text-color': '#555',
+                    },
+                    fontFamily: {
+                        'sans': ['Work Sans', 'sans-serif'],
+                        'serif': ['serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: -4px;
+            padding: 0;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white h-screen overflow-hidden">
+    <div class="auth-page-container flex w-full relative z-[5]" style="background-image: url('images/Signup_images/login_image.png'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+        <div class="form-side w-full md:w-[45%] py-[50px] px-0 md:pl-[120px] pl-5 relative z-[10] bg-white">
+            <div class="logo">
+                <img src="images/Signup_images/Mask group.png" alt="Furniture Logo" class="w-[80px]">
+            </div>
+            <h1 class="main-title font-serif text-[32px] text-main-blue mb-[5px] font-medium">Create Account</h1>
+            <p class="sub-title text-sm text-text-color mb-[30px]">prepare your dream house with one click</p>
+
+            <form class="auth-form flex flex-col w-[80%] max-w-[400px]">
+                <label for="username" class="text-sm text-text-color mb-[5px] capitalize">User Name *</label>
+                <input type="text" id="username" name="username" required class="py-3 px-[15px] mb-5 border-none bg-light-gray-bg rounded-[5px] text-base outline-none">
+                
+                <label for="email-up" class="text-sm text-text-color mb-[5px] capitalize">Email *</label>
+                <input type="email" id="email-up" name="email" required class="py-3 px-[15px] mb-5 border-none bg-light-gray-bg rounded-[5px] text-base outline-none">
+
+                <label for="phone" class="text-sm text-text-color mb-[5px] capitalize">phone *</label>
+                <input type="tel" id="phone" name="phone" required class="py-3 px-[15px] mb-5 border-none bg-light-gray-bg rounded-[5px] text-base outline-none">
+
+                <label for="password-up" class="text-sm text-text-color mb-[5px] capitalize">Password *</label>
+                <input type="passwِِord" id="password-up" name="password" required class="py-3 px-[15px] mb-5 border-none bg-light-gray-bg rounded-[5px] text-base outline-none">
+
+                <label for="confirm-password" class="text-sm text-text-color mb-[5px] capitalize">Confirm Password *</label>
+                <input type="password" id="confirm-password" name="confirm-password" required class="py-3 px-[15px] mb-5 border-none bg-light-gray-bg rounded-[5px] text-base outline-none">
+
+                <button type="submit" class="primary-btn bg-main-blue text-white py-3 px-5 border-none rounded-[5px] text-base font-medium cursor-pointer capitalize mt-[5px]">create account</button>
+            </form>
+
+            
+            <a href="https://www.google.com/" class="google-link flex items-center justify-center w-[80%] max-w-[400px] py-[10px] px-5 mt-[15px] cursor-pointer no-underline text-base font-medium text-text-color bg-white border border-main-orange rounded-[5px]">
+                <span class="google-g text-main-orange text-xl font-bold mr-[5px] leading-none">G</span> continue with google
+            </a>
+
+            <p class="switch-link text-sm text-[#777] mt-5">
+                Already have account, <a href="sign-in.html" class="text-main-orange no-underline font-medium">sign in</a>
+            </p>  
+            
+            
+        </div>
+        <div class="image-side">
+            </div>
+    </div>
+</body>
+</html>

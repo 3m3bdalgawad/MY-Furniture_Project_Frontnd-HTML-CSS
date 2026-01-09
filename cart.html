@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main': '#133A5E',
+                        'orange': '#FF9934',
+                        'bg-light': '#f8f9fa',
+                    },
+                    fontFamily: {
+                        'sans': ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+            text-transform: capitalize;
+            margin: 0;
+            padding: 0;
+        }
+        .cart-item-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: fit-content;
+        }
+        .cart-item-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .quantity-controls input::-webkit-outer-spin-button,
+        .quantity-controls input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .quantity-controls input {
+            -moz-appearance: textfield;
+        }
+        .img-container {
+            width: 90px;
+            height: 90px;
+            min-width: 70px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .item_info {
+            flex: 1;
+            margin-left: 25px;
+        }
+        .item_info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #133A5E;
+        }
+        .remove-btn {
+            border: none;
+            background: transparent;
+            color: #888;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+        }
+        .remove-btn:hover {
+            color: #ff4d4d;
+        }
+        .body_right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #fafafa;
+            overflow: hidden;
+        }
+        .quantity-controls button {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: white;
+            cursor: pointer;
+            font-size: 16px;
+            color: #133A5E;
+            transition: 0.2s;
+        }
+        .quantity-controls button:hover {
+            background-color: #133A5E;
+            color: white;
+        }
+        .quantity-controls input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            outline: none;
+        }
+        @media (max-width: 600px) {
+            .cart-item-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            .item_info {
+                margin-left: 0;
+            }
+            .body_right {
+                align-items: center;
+            }
+        }
+    </style>
+    <title>Cart</title>
+</head>
+<body class="bg-white text-[#333]">
+    <section class="cart py-10 px-[10%] md:px-[10%] px-5 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-[50px] items-start">
+
+
+
+<div class="left flex flex-col gap-[25px] h-auto">
+    <button class="header_clear_cart text-orange py-[10px] px-[25px] rounded-lg border border-main bg-transparent w-fit mx-auto cursor-pointer font-semibold transition-[0.3s] hover:bg-orange hover:text-white hover:border-orange" onclick="clearCart()">Clear Cart</button>
+    <div class="body flex flex-col gap-5" id="cart-items-container"></div> 
+    
+    <button class="footer_continue_shoping bg-main text-white border-none py-3 px-[35px] rounded-[10px] w-fit mx-auto my-5 cursor-pointer font-bold" onclick="window.location.href='products.html'">Continue Shopping</button>
+</div>
+
+
+
+
+        <!-- <div class="left">
+                <button class="header_clear_cart">Clear Cart</button>
+                <div class="body">
+                    
+                        <img src="images/best_seeling/five_left.jpg" alt="">
+                        <div class="item_info">
+                            <h3> Teakwood Rattan Armchair </h3>
+                            <button class="remove">remove</button>
+                        </div>
+                        <div class="body_right">
+                            <strong class="price">9000$</strong>
+                            <div class="quantity-controls">
+                                <button>-</button>
+                                <input type="number" value="1">
+                                <button>+</button>
+                            </div>
+                        </div>
+                    
+                </div>
+                <button class="footer_continue_shoping">continue shoping</button>
+        </div>        -->
+
+
+
+
+
+        <div class="right bg-white p-[30px] rounded-[20px] border border-[#f0f0f0] shadow-[0_10px_30px_rgba(0,0,0,0.05)] flex flex-col h-fit sticky top-10">
+    <h3 class="cart_total w-full py-[10px] text-xl font-bold text-main text-center border-b-2 border-[#eee] mb-5">Cart total</h3>
+    <div class="sub_total flex justify-between py-[10px] text-base text-[#666]">
+        <span>sub total</span> 
+        <span id="subtotal-price">$0</span> 
+    </div>
+    <div class="coupon_code flex py-[10px] px-[15px] rounded-[30px] border border-[#e0e0e0] my-5">
+        <input type="text" placeholder="Enter Coupon Code" class="border-none outline-none flex-1 text-sm">
+        <button class="border-none bg-transparent text-main font-bold cursor-pointer">Apply</button>
+    </div>
+    <div class="total_amount border-t-2 border-main py-5 flex justify-between items-center">
+        <span>total amount</span>  
+        <strong id="total-price" class="text-2xl text-main">$0</strong>
+    </div>
+    <button class="check_out w-full py-[15px] bg-main text-white border-none rounded-[10px] text-base font-bold cursor-pointer transition-[0.3s] hover:bg-[#0d2a45]">check out</button>
+</div>
+        <!-- <div class="right">
+            <h3 class="cart_total">
+                Cart total
+            </h3>
+            <div class="sub_total">
+                <span>sub total</span> 
+                <span>$27.000</span> 
+            </div>
+            <div class="coupon_code">
+                <input type="text" placeholder="Enter Coupon Code">
+                <button>Apply</button>
+            </div>
+            <div class="total_amount">
+                <span>total amount</span>  
+                <strong>$27.000</strong>
+            </div>
+            <button class="check_out">check out</button>
+        </div> -->
+
+    </section>
+
+    <script src="cart.js"></script>
+</body>
+</html>

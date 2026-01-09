@@ -1,0 +1,178 @@
+:root
+{
+    --main-color:#133A5E ;
+    --secondary-color:#EEEEEE59;
+    --section-padding:15px 45px ; 
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+    text-transform: capitalize;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    width: 100%;
+}
+
+.login
+{
+    background-image: url(images/Login_Images/login_image.png);
+    background-size: cover;
+    background-position:50% center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding: 80px;
+}
+
+.login .header 
+{
+    padding: var(--section-padding);
+    max-width: 500px;
+}
+
+.login .header h1 
+{
+    font-family:cursive;
+    color: var(--main-color);
+    font-size: 30px;
+}
+
+.login .header p
+{
+    font-family:cursive;
+    font-size: small;
+}
+
+.login .body form
+{
+    max-width: 500px;
+    padding: var(--section-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.login .body form .email
+{
+    display:flex ;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+}
+
+.login .body form .email .starE
+{
+    font-size: 7px;
+    position: absolute;
+    left: 13%;
+    top: 10%;
+    color: red;
+}
+
+.login .body form .email input 
+{
+    border: none;
+    background-color:#eeeeee;
+    padding: 4px;
+    width: 350px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.login .body form .pass
+{
+    display:flex ;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+}
+
+.login .body form .pass .starP
+{
+    font-size: 7px;
+    position: absolute;
+    left: 22%;
+    top: 10%;
+    color: red;
+}
+
+.login .body form .pass input 
+{
+    border: none;
+    background-color:#eeeeee;
+    padding: 4px;
+    width: 350px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.login .body form button
+{
+    background-color: var(--main-color);
+    color: white;
+    padding: 10px 30px ;
+    border: none;
+    width: 170px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-top: 40px;
+}
+
+.login .body .continue
+{
+    border: #FF9934 1px solid;
+    position: relative;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: small;
+    color: var(--main-color);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    font-size:small ;
+}
+
+.login .body .continue span
+{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #FF9934;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.login .body p 
+{
+    font-size: small;
+}
+
+.login .body p .last
+{
+    color: #FF9934;
+
+} 

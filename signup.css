@@ -1,0 +1,142 @@
+:root {
+    --main-blue: #133A5E;
+    --main-orange: #FF9934;
+    --light-gray-bg: #F4F4F4;
+    --text-color: #555;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+    text-transform: capitalize;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    font-family: 'Work Sans', sans-serif;
+    background-color: white;
+    height: 100vh;
+    overflow: hidden;
+}
+.auth-page-container {
+    display: flex;
+    width: 100%;
+    background-image: url('images/Signup_images/login_image.png'); 
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 5;
+}
+.form-side {
+    width: 45%;
+    padding: 50px 0 50px 120px; 
+    position: relative;
+    z-index: 10;
+    background-color: white;
+}
+
+.logo img {
+    width: 80px;
+}
+.main-title {
+    font-family: serif; 
+    font-size: 32px;
+    color: var(--main-blue);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.sub-title {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 30px;
+}
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 400px;
+}
+.auth-form label {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+.auth-form input {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: var(--light-gray-bg);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+
+.primary-btn {
+    background-color: var(--main-blue);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: capitalize;
+    margin-top: 5px;
+}
+.google-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 400px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    text-decoration: none; 
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    background-color: white;
+    border: 1px solid var(--main-orange); 
+    border-radius: 5px; 
+}
+.google-link .google-g {
+    color: var(--main-orange) ;
+    font-size: 20px; 
+    font-weight: 700;
+    margin-right: 5px; 
+    line-height: 1; 
+}
+.google-btn {
+    display: none; 
+}
+
+.switch-link {
+    font-size: 14px;
+    color: #777;
+    margin-top: 20px;
+}
+.switch-link a {
+    color: var(--main-orange);
+    text-decoration: none;
+    font-weight: 500;
+}
+.bottom-bar {
+    position: absolute;
+    bottom: 30px;
+    left: 120px;
+    width: 80px;
+    height: 8px;
+    background-color: black;
+    border-radius: 5px;
+}
+.circle {
+    position: absolute;
+    background-color: rgba(220, 220, 220, 0.4);
+    border-radius: 50%;
+    z-index: 9;
+}

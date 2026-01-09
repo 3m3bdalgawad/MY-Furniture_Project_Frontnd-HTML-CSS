@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main': '#133a5e',
+                        'secondary': '#eeeeee59',
+                        'third': '#d4af37',
+                    },
+                    fontFamily: {
+                        'sans': ['Arial', 'Helvetica', 'sans-serif'],
+                    },
+                    animation: {
+                        'zoom': 'zoom 0.4s ease-out',
+                        'fadeInLeft': 'fadeInLeft 1s ease-out',
+                        'fadeInRight': 'fadeInRight 1.2s ease-out',
+                        'fadeInUp': 'fadeInUp 1s ease-out 0.6s forwards',
+                    },
+                    keyframes: {
+                        zoom: {
+                            '0%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(3)' },
+                            '100%': { transform: 'scale(1)' },
+                        },
+                        fadeInLeft: {
+                            'from': { opacity: '0', transform: 'translateX(-50px)' },
+                            'to': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeInRight: {
+                            'from': { opacity: '0', transform: 'translateX(50px)' },
+                            'to': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeInUp: {
+                            'from': { opacity: '0', transform: 'translateY(30px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        * {
+            text-transform: capitalize;
+        }
+        .nav_under .nav_under_right .links ul li a::after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 2px;
+            background-color: #d4af37;
+            bottom: -5px;
+            left: 0;
+            display: block;
+            transform: scaleX(0);
+            transform-origin: bottom left;
+            transition: transform 0.4s ease;
+        }
+        .nav_under .nav_under_right .links ul li a:hover::after {
+            transform: scaleX(1);
+        }
+        .section_one .left p {
+            animation: fadeInLeft 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+        .section_one .left a {
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+        .section_two .body .element div:hover + p {
+            color: #d4af37;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+        .element:hover .element-inner {
+            transform: rotateY(180deg) translateY(-5px);
+        }
+        .bump {
+            animation: zoom 0.4s ease-out;
+        }
+        @media (max-width: 768px) {
+            .section_one {
+                flex-direction: column;
+                padding: 15px 20px !important;
+            }
+            .section_one .left div {
+                font-size: 2rem !important;
+            }
+            .section_one .right img {
+                width: 100% !important;
+                height: auto !important;
+            }
+            nav {
+                padding: 15px 20px 5px !important;
+            }
+            .nav_under {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav_under_right {
+                flex-direction: column;
+                width: 100%;
+            }
+            .nav_under_right .links ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            .section_two .body {
+                flex-direction: column;
+            }
+            .best_seeling .body {
+                flex-direction: column;
+            }
+            .best_seeling .body .element img {
+                width: 100% !important;
+            }
+            .specialofers .body {
+                flex-direction: column;
+            }
+            .services .body .above {
+                flex-direction: column;
+                width: 90% !important;
+            }
+            .footer-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <title>Home</title>
+</head>
+<body class="box-border capitalize font-sans">
+    <nav class="sticky top-0 py-[15px] px-[45px] md:px-[45px] px-5 pb-[5px] h-fit bg-white/80 backdrop-blur-[10px] border-b border-black/10 z-[100]">
+        <div class="nav_above flex flex-col md:flex-row justify-between items-center pb-[10px] opacity-70 relative after:content-[''] after:absolute after:bottom-0 after:w-full after:h-[2px] after:bg-[#aeaeae] gap-2 md:gap-0">
+            <div class="nav_above_left text-sm md:text-base">example @gmail.com</div>
+            <div class="nav_above_right flex">
+                <i class="fa-solid fa-magnifying-glass mr-[10px] cursor-pointer"></i>
+                <div id="cart-icon-container" class="cart-icon-wrapper relative inline-block transition-transform duration-200 ease">
+                    <i onclick="gotocart()" class="fa-solid fa-cart-shopping mr-[10px] cursor-pointer relative after:content-[''] after:absolute after:top-[-2px] after:right-[-2px] after:w-[10px] after:h-[10px] after:rounded-full after:bg-red-500"></i>
+                    <span id="cart-count" class="absolute top-[-10px] right-[-3px] min-w-[18px] h-[18px] bg-[#ff9934] text-white text-[11px] font-bold rounded-full flex justify-center items-center border-2 border-white">0</span>
+                </div>
+                
+                <i class="fa-regular fa-comment mr-[10px] cursor-pointer"></i>
+                <i class="fa-regular fa-heart mr-[10px] cursor-pointer"></i>
+            </div>
+        </div>
+        <div class="nav_under flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+            <div class="nav_under_left">
+                <img src="images/nav_image/left.png" alt="" class="w-[70px] h-[70px] mb-[-10px]">
+            </div>
+            <div class="nav_under_right flex flex-col md:flex-row items-center gap-5 w-full md:w-auto">
+                <div class="links w-full md:w-auto">
+                    <ul class="flex flex-col md:flex-row list-none gap-5 transition-transform duration-300 ease w-full md:w-auto">
+                        <li><a href="Home.html" target="_blank" class="text-black no-underline relative cursor-pointer hover:text-third">Home</a></li>
+                        <li><a href="Products.html" target="_blank" class="text-black no-underline relative cursor-pointer hover:text-third">Shop</a></li>
+                        <li><a href="cart.html" target="_blank" class="text-black no-underline relative cursor-pointer hover:text-third">cart</a></li>
+                        <li><a href="#BS" class="text-black no-underline relative cursor-pointer hover:text-third">Best Selling</a></li>
+                        <li><a href="#SO" class="text-black no-underline relative cursor-pointer hover:text-third">special offers</a></li>
+                        <li><a href="#Serv" class="text-black no-underline relative cursor-pointer hover:text-third">Services</a></li>
+                    </ul>
+                </div>
+                <a href="Sign_in.html" target="_blank" class="bg-main text-white py-[10px] px-5 rounded-[30px] no-underline font-bold inline-block transition-all duration-300 ease shadow-[0_4px_6px_rgba(0,0,0,0.1)] hover:-translate-y-[5px] hover:bg-[#1a4d7c] w-full md:w-auto text-center">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+    <section class="section_one py-[15px] px-[45px] md:px-[45px] px-5 bg-secondary flex flex-col md:flex-row justify-evenly items-center overflow-hidden">
+        <div class="left flex flex-col items-start gap-[15px] animate-fadeInLeft w-full md:w-auto">
+            <div class="text-[2rem] md:text-[3rem] font-extrabold text-main leading-tight">Modern furniture store </div>
+            <p class="text-[#555] tracking-[2px] text-base md:text-[1.1rem]">Discover the best furniture with high quality <br> <Span>here</Span> </p>
+            <a href="Products.html" class="bg-main text-white py-3 px-[35px] rounded-[50px] no-underline font-bold transition-all duration-300 shadow-[0_4px_15px_rgba(19,58,94,0.2)] hover:-translate-y-[5px] hover:shadow-[0_10px_25px_rgba(19,58,94,0.3)] hover:tracking-[1px]" style="transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);">Shop Now</a>
+        </div>
+        <div class="right animate-fadeInRight w-full md:w-auto">
+            <img src="images/section_one/right.jpg" alt="" class="w-full md:w-[550px] h-auto md:h-[500px] object-cover rounded-tl-[300px] rounded-tr-[300px] shadow-[0_20px_40px_rgba(0,0,0,0.1)] transition-all duration-500 ease hover:scale-[1.02] hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] hover:brightness-[1.05]">
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="section_two mt-[50px] py-[15px] px-[45px] md:px-[45px] px-5 flex flex-col justify-center items-center">
+        <div class="header flex flex-row justify-between items-center w-full text-main">
+            <div class="left text-xl md:text-2xl">Shop By Category</div>
+            <div class="symbols flex flex-row justify-end items-center gap-[3px]">
+                <i class="fa-solid fa-circle-chevron-left"></i>
+                <i class="fa-solid fa-circle-chevron-right"></i>
+            </div>
+        </div>
+
+        <div class="body mt-[50px] flex flex-row justify-around items-center gap-5 w-full flex-wrap">
+            <div class="element flex flex-col justify-center items-center">
+                <div class="w-[100px] h-[100px] bg-[#f2f2f2] flex justify-center items-center rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] transition-all duration-300 ease overflow-hidden hover:scale-[1.2]" style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"><img src="images/shop_bycategory/one_left.png" alt="" class="w-[70%] h-auto"></div>
+                <p class="text-main">Safa</p>
+            </div>
+            <div class="element flex flex-col justify-center items-center">
+                <div class="w-[100px] h-[100px] bg-[#f2f2f2] flex justify-center items-center rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] transition-all duration-300 ease overflow-hidden hover:scale-[1.2]" style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"><img src="images/shop_bycategory/two_left.png" alt="" class="w-[70%] h-auto"></div>
+                <p class="text-main">Tables</p>
+            </div>
+            <div class="element flex flex-col justify-center items-center">
+                <div class="w-[100px] h-[100px] bg-[#f2f2f2] flex justify-center items-center rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] transition-all duration-300 ease overflow-hidden hover:scale-[1.2]" style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"><img src="images/shop_bycategory/three_left.png" alt="" class="w-[70%] h-auto"></div>
+                <p class="text-main">Chairs</p>
+            </div>
+            <div class="element flex flex-col justify-center items-center">
+                <div class="w-[100px] h-[100px] bg-[#f2f2f2] flex justify-center items-center rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] transition-all duration-300 ease overflow-hidden hover:scale-[1.2]" style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"><img src="images/shop_bycategory/four_left.png" alt="" class="w-[70%] h-auto"></div>
+                <p class="text-main">Lighting</p>
+            </div>
+            <div class="element flex flex-col justify-center items-center">
+                <div class="w-[100px] h-[100px] bg-[#f2f2f2] flex justify-center items-center rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] transition-all duration-300 ease overflow-hidden hover:scale-[1.2]" style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"><img src="images/shop_bycategory/five_left.png" alt="" class="w-[70%] h-auto"></div>
+                <p class="text-main">Storage</p>
+            </div>
+            <div class="element flex flex-col justify-center items-center">
+                <div class="w-[100px] h-[100px] bg-[#f2f2f2] flex justify-center items-center rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] transition-all duration-300 ease overflow-hidden hover:scale-[1.2]" style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"><img src="images/shop_bycategory/one_left.png" alt="" class="w-[70%] h-auto"></div>
+                <p class="text-main">Safa</p>
+            </div>
+            <div class="element flex flex-col justify-center items-center">
+                <div class="w-[100px] h-[100px] bg-[#f2f2f2] flex justify-center items-center rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] transition-all duration-300 ease overflow-hidden hover:scale-[1.2]" style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"><img src="images/shop_bycategory/one_left.png" alt="" class="w-[70%] h-auto"></div>
+                <p class="text-main">Safa</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+
+
+
+
+    <section id="BS" class="best_seeling py-[15px] px-[45px] md:px-[45px] px-5 mt-[50px] flex flex-col justify-center items-center gap-[10px]">
+        <div class="header flex flex-row justify-between items-center w-full text-main">
+            <div class="text-xl md:text-2xl">Best Selling</div>
+            <button class="border-2 border-main py-[5px] px-[15px] rounded-[30px] text-main text-sm md:text-base">See all</button>
+        </div>
+
+        <div class="body mt-[50px] flex flex-row justify-center items-center gap-5 flex-wrap">
+
+            
+            <div class="element border border-[#eeeeee] rounded-[20px] overflow-hidden relative bg-white transition-all duration-[400ms] ease-in-out hover:-translate-y-[10px] hover:shadow-[0_15px_30px_rgba(19,58,94,0.2)]">
+                <img src="images/best_seeling/one_left.jpg" alt="" class="w-full md:w-[260px] h-[220px] object-cover block transition-transform duration-[400ms] ease-in-out hover:scale-[1.4]">
+                <i class="fa-regular fa-heart absolute top-[4%] right-[4%] bg-[#ff9934] text-white w-8 h-8 flex justify-center items-center text-base rounded-lg p-0"></i>
+                <div class="underimg bg-white p-[15px] -mt-[10px] relative z-[2] rounded-t-[20px] shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
+                    <p>Orange Chair</p>
+                    <div class="underelement flex flex-row justify-between items-center">
+                        <div class="left_underelement flex flex-row justify-start items-center gap-[5px]">
+                            <span class="startspan bg-[#8fc83d] py-[2px] px-[6px] rounded-lg text-white"> <i class="fa-solid fa-star"></i> 4.6 </span>
+                            <span>(200)</span>
+                        </div>
+                        <div class="right_underelement flex flex-col justify-end items-center">
+                            <span>$500.00</span>
+                            <del>$600.00</del> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+<div class="element border border-[#eeeeee] rounded-[20px] overflow-hidden relative bg-white transition-all duration-[400ms] ease-in-out hover:-translate-y-[10px] hover:shadow-[0_15px_30px_rgba(19,58,94,0.2)] w-full md:w-[260px]">
+                <img src="images/best_seeling/two_left.jpg" alt="" class="w-full md:w-[260px] h-[220px] object-cover block transition-transform duration-[400ms] ease-in-out hover:scale-[1.4]">
+                <i class="fa-regular fa-heart absolute top-[4%] right-[4%] bg-[#ff9934] text-white w-8 h-8 flex justify-center items-center text-base rounded-lg p-0"></i>
+                <div class="underimg bg-white p-[15px] -mt-[10px] relative z-[2] rounded-t-[20px] shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
+                    <p>Orange Chair</p>
+                    <div class="underelement flex flex-row justify-between items-center">
+                        <div class="left_underelement flex flex-row justify-start items-center gap-[5px]">
+                            <span class="startspan bg-[#8fc83d] py-[2px] px-[6px] rounded-lg text-white"><i class="fa-solid fa-star"></i> 4.9  </span>
+                            <span>(200)</span>
+                        </div>
+                        <div class="right_underelement flex flex-col justify-end items-center">
+                            <span>$900.00</span>
+                            <del>$1200.00</del> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="element border border-[#eeeeee] rounded-[20px] overflow-hidden relative bg-white transition-all duration-[400ms] ease-in-out hover:-translate-y-[10px] hover:shadow-[0_15px_30px_rgba(19,58,94,0.2)] w-full md:w-[260px]">
+                <img src="images/best_seeling/three_left.jpg" alt="" class="w-full md:w-[260px] h-[220px] object-cover block transition-transform duration-[400ms] ease-in-out hover:scale-[1.4]">
+                <i class="fa-regular fa-heart absolute top-[4%] right-[4%] bg-[#ff9934] text-white w-8 h-8 flex justify-center items-center text-base rounded-lg p-0"></i>
+                <div class="underimg bg-white p-[15px] -mt-[10px] relative z-[2] rounded-t-[20px] shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
+                    <p>Orange Chair</p>
+                    <div class="underelement flex flex-row justify-between items-center">
+                        <div class="left_underelement flex flex-row justify-start items-center gap-[5px]">
+                            <span class="startspan bg-[#8fc83d] py-[2px] px-[6px] rounded-lg text-white"><i class="fa-solid fa-star"></i> 4.7  </span>
+                            <span>(200)</span>
+                        </div>
+                        <div class="right_underelement flex flex-col justify-end items-center">
+                            <span>$550.00</span>
+                            <del>$690.00</del> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="element border border-[#eeeeee] rounded-[20px] overflow-hidden relative bg-white transition-all duration-[400ms] ease-in-out hover:-translate-y-[10px] hover:shadow-[0_15px_30px_rgba(19,58,94,0.2)]">
+                <img src="images/best_seeling/one_left.jpg" alt="" class="w-full md:w-[260px] h-[220px] object-cover block transition-transform duration-[400ms] ease-in-out hover:scale-[1.4]">
+                <i class="fa-regular fa-heart absolute top-[4%] right-[4%] bg-[#ff9934] text-white w-8 h-8 flex justify-center items-center text-base rounded-lg p-0"></i>
+                <div class="underimg bg-white p-[15px] -mt-[10px] relative z-[2] rounded-t-[20px] shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
+                    <p>Orange Chair</p>
+                    <div class="underelement flex flex-row justify-between items-center">
+                        <div class="left_underelement flex flex-row justify-start items-center gap-[5px]">
+                            <span class="startspan bg-[#8fc83d] py-[2px] px-[6px] rounded-lg text-white"><i class="fa-solid fa-star"></i> 4.3 </span>
+                            <span>(200)</span>
+                        </div>
+                        <div class="right_underelement flex flex-col justify-end items-center">
+                            <span>$550.00</span>
+                            <del>$660.00</del> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+<div class="element border border-[#eeeeee] rounded-[20px] overflow-hidden relative bg-white transition-all duration-[400ms] ease-in-out hover:-translate-y-[10px] hover:shadow-[0_15px_30px_rgba(19,58,94,0.2)] w-full md:w-[260px]">
+                <img src="images/best_seeling/five_left.jpg" alt="" class="w-full md:w-[260px] h-[220px] object-cover block transition-transform duration-[400ms] ease-in-out hover:scale-[1.4]">
+                <i class="fa-regular fa-heart absolute top-[4%] right-[4%] bg-[#ff9934] text-white w-8 h-8 flex justify-center items-center text-base rounded-lg p-0"></i>
+                <div class="underimg bg-white p-[15px] -mt-[10px] relative z-[2] rounded-t-[20px] shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
+                    <p>Orange Chair</p>
+                    <div class="underelement flex flex-row justify-between items-center">
+                        <div class="left_underelement flex flex-row justify-start items-center gap-[5px]">
+                            <span class="startspan bg-[#8fc83d] py-[2px] px-[6px] rounded-lg text-white"><i class="fa-solid fa-star"></i> 4.4 </span>
+                            <span>(200)</span>
+                        </div>
+                        <div class="right_underelement flex flex-col justify-end items-center">
+                            <span>$400.00</span>
+                            <del>$700.00</del> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="SO" class="specialofers py-[15px] px-[45px] md:px-[45px] px-5 mt-[80px] flex flex-col gap-10">
+    <div class="header text-xl md:text-[2rem] font-extrabold text-main capitalize">Special Offers</div>
+
+    <div class="body flex flex-row flex-wrap justify-center items-center gap-[30px]">
+        <div class="element w-full md:w-[300px] h-[220px] bg-transparent" style="perspective: 1000px;">
+            <div class="element-inner relative w-full h-full transition-transform duration-[800ms] cursor-pointer" style="transform-style: preserve-3d; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);">
+                <div class="element-front absolute w-full h-full rounded-[20px] p-5 shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-shadow duration-300 ease bg-[#eeeeee] flex flex-row justify-between items-center" style="-webkit-backface-visibility: hidden; backface-visibility: hidden;">
+                    <div class="left flex flex-col justify-between h-full items-start">
+                        <div class="leftabove flex flex-col justify-between items-start gap-0">
+                            <button class="saving-btn bg-white py-[5px] px-3 border-none rounded-[5px] text-[0.8rem] mb-[10px]">Big Saving</button>
+                            <div class="title font-semibold text-[1.1rem] text-[#333]">White Comfortable Chair</div>
+                        </div>
+                        <div class="leftunder flex flex-col justify-between items-start gap-0">
+                            <span class="price font-extrabold text-[#333] block mb-2">$429.00</span>
+                            <button class="buy-btn bg-main text-white py-2 px-[25px] border-none rounded-[30px] font-bold cursor-pointer">Buy Now</button>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="images/special_offers/all_three.png" alt="chair" class="w-[130px] h-auto object-contain">
+                    </div>
+                </div>
+                <div class="element-back absolute w-full h-full rounded-[20px] p-5 shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-shadow duration-300 ease bg-main text-white flex flex-col justify-center items-center text-center gap-[15px]" style="transform: rotateY(180deg); -webkit-backface-visibility: hidden; backface-visibility: hidden;">
+                    <h3 class="m-0 text-[1.2rem]">Product Details</h3>
+                    <p class="text-[0.85rem] leading-[1.4] m-0 px-[10px]">Designed for premium comfort using high-density foam and breathable fabric for long seating hours.</p>
+                    <button class="more-btn bg-white text-main border-none py-[7px] px-5 rounded-[20px] font-bold cursor-pointer">View Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="element w-full md:w-[300px] h-[220px] bg-transparent" style="perspective: 1000px;">
+            <div class="element-inner relative w-full h-full transition-transform duration-[800ms] cursor-pointer" style="transform-style: preserve-3d; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);">
+                <div class="element-front absolute w-full h-full rounded-[20px] p-5 shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-shadow duration-300 ease bg-[#eeeeee] flex flex-row justify-between items-center" style="-webkit-backface-visibility: hidden; backface-visibility: hidden;">
+                    <div class="left flex flex-col justify-between h-full items-start">
+                        <div class="leftabove flex flex-col justify-between items-start gap-0">
+                            <button class="saving-btn bg-white py-[5px] px-3 border-none rounded-[5px] text-[0.8rem] mb-[10px]">Big Saving</button>
+                            <div class="title font-semibold text-[1.1rem] text-[#333]">White Comfortable Chair</div>
+                        </div>
+                        <div class="leftunder flex flex-col justify-between items-start gap-0">
+                            <span class="price font-extrabold text-[#333] block mb-2">$429.00</span>
+                            <button class="buy-btn bg-main text-white py-2 px-[25px] border-none rounded-[30px] font-bold cursor-pointer">Buy Now</button>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="images/special_offers/all_three.png" alt="chair" class="w-[130px] h-auto object-contain">
+                    </div>
+                </div>
+                <div class="element-back absolute w-full h-full rounded-[20px] p-5 shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-shadow duration-300 ease bg-main text-white flex flex-col justify-center items-center text-center gap-[15px]" style="transform: rotateY(180deg); -webkit-backface-visibility: hidden; backface-visibility: hidden;">
+                    <h3 class="m-0 text-[1.2rem]">Ergonomic Design</h3>
+                    <p class="text-[0.85rem] leading-[1.4] m-0 px-[10px]">Features adjustable height and lumbar support to ensure your posture stays perfect.</p>
+                    <button class="more-btn bg-white text-main border-none py-[7px] px-5 rounded-[20px] font-bold cursor-pointer">View Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="element w-full md:w-[300px] h-[220px] bg-transparent" style="perspective: 1000px;">
+            <div class="element-inner relative w-full h-full transition-transform duration-[800ms] cursor-pointer" style="transform-style: preserve-3d; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);">
+                <div class="element-front absolute w-full h-full rounded-[20px] p-5 shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-shadow duration-300 ease bg-[#eeeeee] flex flex-row justify-between items-center" style="-webkit-backface-visibility: hidden; backface-visibility: hidden;">
+                    <div class="left flex flex-col justify-between h-full items-start">
+                        <div class="leftabove flex flex-col justify-between items-start gap-0">
+                            <button class="saving-btn bg-white py-[5px] px-3 border-none rounded-[5px] text-[0.8rem] mb-[10px]">Big Saving</button>
+                            <div class="title font-semibold text-[1.1rem] text-[#333]">White Comfortable Chair</div>
+                        </div>
+                        <div class="leftunder flex flex-col justify-between items-start gap-0">
+                            <span class="price font-extrabold text-[#333] block mb-2">$429.00</span>
+                            <button class="buy-btn bg-main text-white py-2 px-[25px] border-none rounded-[30px] font-bold cursor-pointer">Buy Now</button>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="images/special_offers/all_three.png" alt="chair" class="w-[130px] h-auto object-contain">
+                    </div>
+                </div>
+                <div class="element-back absolute w-full h-full rounded-[20px] p-5 shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-shadow duration-300 ease bg-main text-white flex flex-col justify-center items-center text-center gap-[15px]" style="transform: rotateY(180deg); -webkit-backface-visibility: hidden; backface-visibility: hidden;">
+                    <h3 class="m-0 text-[1.2rem]">Modern Style</h3>
+                    <p class="text-[0.85rem] leading-[1.4] m-0 px-[10px]">A minimalist aesthetic that fits perfectly in any modern living room or office space.</p>
+                    <button class="more-btn bg-white text-main border-none py-[7px] px-5 rounded-[20px] font-bold cursor-pointer">View Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="element w-full md:w-[300px] h-[220px] bg-transparent" style="perspective: 1000px;">
+            <div class="element-inner relative w-full h-full transition-transform duration-[800ms] cursor-pointer" style="transform-style: preserve-3d; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);">
+                <div class="element-front absolute w-full h-full rounded-[20px] p-5 shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-shadow duration-300 ease bg-[#eeeeee] flex flex-row justify-between items-center" style="-webkit-backface-visibility: hidden; backface-visibility: hidden;">
+                    <div class="left flex flex-col justify-between h-full items-start">
+                        <div class="leftabove flex flex-col justify-between items-start gap-0">
+                            <button class="saving-btn bg-white py-[5px] px-3 border-none rounded-[5px] text-[0.8rem] mb-[10px]">Big Saving</button>
+                            <div class="title font-semibold text-[1.1rem] text-[#333]">White Comfortable Chair</div>
+                        </div>
+                        <div class="leftunder flex flex-col justify-between items-start gap-0">
+                            <span class="price font-extrabold text-[#333] block mb-2">$429.00</span>
+                            <button class="buy-btn bg-main text-white py-2 px-[25px] border-none rounded-[30px] font-bold cursor-pointer">Buy Now</button>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="images/special_offers/all_three.png" alt="chair" class="w-[130px] h-auto object-contain">
+                    </div>
+                </div>
+                <div class="element-back absolute w-full h-full rounded-[20px] p-5 shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-shadow duration-300 ease bg-main text-white flex flex-col justify-center items-center text-center gap-[15px]" style="transform: rotateY(180deg); -webkit-backface-visibility: hidden; backface-visibility: hidden;">
+                    <h3 class="m-0 text-[1.2rem]">Durable Quality</h3>
+                    <p class="text-[0.85rem] leading-[1.4] m-0 px-[10px]">Built with a reinforced steel frame and premium upholstery for lifetime durability.</p>
+                    <button class="more-btn bg-white text-main border-none py-[7px] px-5 rounded-[20px] font-bold cursor-pointer">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+    <section id="SO" class="specialofers">
+        <div class="header">special offers</div>
+
+        <div class="body">
+            <div class="element">
+                <div class="left">
+                    <div class="leftabove">
+                        <button>Big Saving</button>
+                        <div>white comfortable chair</div>
+                    </div>
+
+                    <div class="leftunder">
+                        <span>$429.00</span>
+                        <button>Buy Now</button>
+                    </div>
+
+                </div>
+                <div class="right"><img src="images/special_offers/all_three.png" alt=""></div>
+            </div>
+
+
+            <div class="element">
+                <div class="left">
+                    <div class="leftabove">
+                        <button>Big Saving</button>
+                        <div>white comfortable chair</div>
+                    </div>
+
+                    <div class="leftunder">
+                        <span>$429.00</span>
+                        <button>Buy Now</button>
+                    </div>
+
+                </div>
+                <div class="right"><img src="images/special_offers/all_three.png" alt=""></div>
+            </div>
+
+
+
+            <div class="element">
+                <div class="left">
+                    <div class="leftabove">
+                        <button>Big Saving</button>
+                        <div>white comfortable chair</div>
+                    </div>
+
+                    <div class="leftunder">
+                        <span>$429.00</span>
+                        <button>Buy Now</button>
+                    </div>
+
+                </div>
+                <div class="right"><img src="images/special_offers/all_three.png" alt=""></div>
+            </div>
+
+
+            <div class="element">
+                <div class="left">
+                    <div class="leftabove">
+                        <button>Big Saving</button>
+                        <div>white comfortable chair</div>
+                    </div>
+
+                    <div class="leftunder">
+                        <span>$429.00</span>
+                        <button>Buy Now</button>
+                    </div>
+
+                </div>
+                <div class="right"><img src="images/special_offers/all_three.png" alt=""></div>
+            </div>
+
+        </div>
+    </section> -->
+
+
+
+
+
+
+
+
+<section id="Serv" class="services py-[15px] px-[45px] md:px-[45px] px-5 mt-[50px] flex flex-col justify-center items-center gap-0">
+    <div class="header capitalize text-main text-xl md:text-2xl mb-[80px] font-bold">Services</div>
+    <div class="body w-full flex flex-col justify-center items-center bg-main rounded-[50px]">
+        <div class="above flex flex-col md:flex-row justify-center items-center gap-[5px] w-full md:w-[60%] -mt-[40px] flex-wrap">
+            <div class="element bg-white py-10 px-5 flex-1 flex flex-col justify-between items-center gap-[30px] rounded-[15px] shadow-[0_10px_25px_rgba(0,0,0,0.1)]">
+                <i class="fa-solid fa-truck-fast text-main text-2xl"></i>
+                <div class="text-main">Fast Shipping</div>
+                <p class="text-[#646161]">Free delivery for <br> order over $100.00</p>
+            </div>
+            <div class="element bg-white py-10 px-5 flex-1 flex flex-col justify-between items-center gap-[30px] rounded-[15px] shadow-[0_10px_25px_rgba(0,0,0,0.1)]">
+                <i class="fa-solid fa-headphones text-main text-2xl"></i>
+                <div class="text-main">Online Support</div>
+                <p class="text-[#646161]">Feel Free to call us &  <br> get best support.</p>
+            </div>
+            <div class="element bg-white py-10 px-5 flex-1 flex flex-col justify-between items-center gap-[30px] rounded-[15px] shadow-[0_10px_25px_rgba(0,0,0,0.1)]">
+                <i class="fa-solid fa-gift text-main text-2xl"></i>
+                <div class="text-main">gift voucher</div>
+                <p class="text-[#646161]">refer a friend & get <br> a surprise gifts.</p>
+            </div>
+            <div class="element bg-white py-10 px-5 flex-1 flex flex-col justify-between items-center gap-[30px] rounded-[15px] shadow-[0_10px_25px_rgba(0,0,0,0.1)]">
+                <i class="fa-solid fa-credit-card text-main text-2xl"></i>
+                <div class="text-main">Secure payment</div>
+                <p class="text-[#646161]">Safe & more secure <br> way to pay online.</p>
+            </div>
+        </div>
+        <div class="under flex flex-row justify-center items-center">
+            <img src="images/services/one.png" alt="" class="w-[60%] h-auto -mb-[100px]">
+        </div>
+    </div>
+</section>
+
+
+
+
+<footer class="main-footer bg-[#f9f9f9] py-[15px] px-[45px] md:px-[45px] px-5 relative mt-[150px] h-auto">
+    <div class="footer-container w-[90%] my-5 mx-auto flex flex-col md:flex-row justify-between gap-10 flex-wrap">
+        <div class="footer-col brand-col">
+            <img src="images/nav_image/left.png" alt="Furniture Logo" class="footer-logo w-[100px]">
+            <p class="brand-desc text-[#666] text-sm leading-[1.6] mb-5">Lorem Ipsum is simply dummy text of the site.</p>
+            <div class="contact-info">
+                <p class="text-sm text-[#333] mb-[10px]"><i class="fa-solid fa-location-dot mr-[10px] text-black"></i> Ismailia</p>
+                <p class="text-sm text-[#333] mb-[10px]"><i class="fa-solid fa-phone mr-[10px] text-black"></i> 01234567890</p>
+                <p class="text-sm text-[#333] mb-[10px]"><i class="fa-solid fa-envelope mr-[10px] text-black"></i> example@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3 class="text-black text-xl mb-[25px] font-bold">Company</h3>
+            <ul class="list-none p-0">
+                <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">About</a></li>
+                <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">All Products</a></li>
+                <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">Login</a></li>
+                <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">Community</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col categories-col">
+            <h3 class="text-black text-xl mb-[25px] font-bold">Categories</h3>
+            <div class="categories-list flex gap-10">
+                <ul class="list-none p-0">
+                    <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">Sofas</a></li>
+                    <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">Lamps</a></li>
+                    <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">Chairs</a></li>
+                </ul>
+                <ul class="list-none p-0">
+                    <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">Tables</a></li>
+                    <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">Doors</a></li>
+                    <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">Drawers</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3 class="text-black text-xl mb-[25px] font-bold">Customer Care</h3>
+            <ul class="list-none p-0">
+                <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">Contact us</a></li>
+                <li class="mb-3"><a href="#" class="no-underline text-[#666] text-[15px] transition-[0.3s] hover:text-orange-500">Live Chat</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom pt-[10px] border-t border-orange-500 h-[50px]">
+        <div class="bottom-container w-[70%] mx-auto my-0 flex justify-between items-center text-[#555]">
+            <p>&copy; 2023, All Rights are Reserved</p>
+            <div class="social-links">
+                <a href="#" class="text-black text-xl ml-5 transition-[0.3s] hover:text-orange-500"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="text-black text-xl ml-5 transition-[0.3s] hover:text-orange-500"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="text-black text-xl ml-5 transition-[0.3s] hover:text-orange-500"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="scroll-up-btn absolute right-0 top-[76%] bg-[#ff9934] text-white w-[50px] h-[50px] rounded-full flex justify-center items-center no-underline text-xl shadow-[0_4px_10px_rgba(0,0,0,0.1)]"><i class="fa-solid fa-chevron-up"></i></a>
+</footer>
+
+
+
+<script src="products.js"></script>
+
+</body>
+</html>
